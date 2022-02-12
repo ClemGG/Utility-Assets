@@ -4,6 +4,9 @@ using UnityEngine;
 [CustomEditor(typeof(NoteComponent))]
 public class NoteEditor : Editor
 {
+
+    #region Menu Items
+
     [MenuItem("Tools/EasyNotes/View All Notes")]
     public static void ViewObjectNotesWindow()
     {
@@ -32,6 +35,9 @@ public class NoteEditor : Editor
         Debug.Log("Successfully added the Note Component to selected GameObject!");
     }
 
+    #endregion
+
+
     public override void OnInspectorGUI()
     {
         NoteComponent noteComponent = target as NoteComponent;
@@ -40,14 +46,19 @@ public class NoteEditor : Editor
         {
             var savedNote = noteComponent.notes[i];
 
-            if(!string.IsNullOrEmpty(savedNote.header)) savedNote.header = EditorGUILayout.TextField(savedNote.header);
-            else savedNote.header = EditorGUILayout.TextField($"Note {i + 1}");
+            if(!string.IsNullOrEmpty(savedNote.header)) 
+                savedNote.header = EditorGUILayout.TextField(savedNote.header);
+            else 
+                savedNote.header = EditorGUILayout.TextField($"Note {i + 1}");
 
             GUI.color = savedNote.color;
+            GUIStyle style = new(GUI.skin.textArea);
+            style.wordWrap = true;
 
-            savedNote.text = EditorGUILayout.TextArea(savedNote.text, GUILayout.Height(50f));
+            savedNote.text = EditorGUILayout.TextArea(savedNote.text, style, GUILayout.Height(50f), GUILayout.ExpandHeight(true));
 
             GUI.color = new Color(1, 1, 1, 1);
+            style.wordWrap = false;
 
             EditorGUILayout.BeginHorizontal();
 
