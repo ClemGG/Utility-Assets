@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 98
+  controlID: 61
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 18
+  controlID: 62
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 19
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +317,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Packages
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Packages
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\Cl\xE9ment\\Documents\\GitHub\\Unity\\Utility-Assets"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 83}
-    m_SelectedIDs: 98470000
-    m_LastClickedID: 18328
-    m_ExpandedIDs: 00000000524700005447000056470000584700005a470000404a000000ca9a3b
+    m_SelectedIDs: 7c470000
+    m_LastClickedID: 18300
+    m_ExpandedIDs: 000000002c4700002e47000030470000324700007647000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -360,7 +360,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000524700005447000056470000584700005a470000
+    m_ExpandedIDs: 000000002c4700002e4700003047000032470000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -488,9 +488,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2e4a0000
+      m_SelectedIDs: 98470000
       m_LastClickedID: 0
-      m_ExpandedIDs: bcfaffff
+      m_ExpandedIDs: 36fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -790,11 +790,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.06348309, y: 0.64215416, z: -0.05349225, w: -0.7621045}
     speed: 2
-    m_Value: {x: -0.05526553, y: 0.6460879, z: -0.0469942, w: -0.7598077}
+    m_Value: {x: -0.06348309, y: 0.64215416, z: -0.05349225, w: -0.7621045}
   m_Size:
     m_Target: 3.4653957
     speed: 2
-    m_Value: 3.6286867
+    m_Value: 3.4653957
   m_Ortho:
     m_Target: 0
     speed: 2
