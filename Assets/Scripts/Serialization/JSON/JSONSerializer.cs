@@ -4,25 +4,30 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace JSONSerializer
+namespace Project.Serialization.JSON
 {
     /// <summary>
     /// Système de sauvegarde/chargement de données dans un fichier au format JSON
     /// </summary>
-    public static class JSONSerializerDTO
+    public class JSONSerializer : IFileWriter, IFileReader, IFileFormatter
     {
         #region Fonctions publiques
 
         /// <summary>
         /// Charge un fichier de type générique
         /// </summary>
-        /// <param name="filename">Fichier a charger</param>
-        /// <returns>Instance du fichier</returns>
-        public static T LoadFromFile<T>(string filename)
+        /// <param name="filePath">Fichier a charger</param>
+        /// <returns>Instance du fichier, new T() si le fichier n'existe pas.</returns>
+        public T LoadFromFile<T>(string filePath) where T : new()
         {
+            if (!File.Exists(filePath))
+            {
+                return new T();
+            }
+
             // Lecture du fichier
 
-            string data = File.ReadAllText(filename);
+            string data = File.ReadAllText(filePath);
 
             // Désérialisation des données
 
@@ -37,7 +42,8 @@ namespace JSONSerializer
         /// Enregristre le fichier sur le disque
         /// </summary>
         /// <param name="data">Données à sauvegarder</param>
-        public static void SaveToFile<T>(T data, string filename)
+        /// <param name="filePath">Fichier a charger</param>
+        public void SaveToFile<T>(T data, string filePath)
         {
             using MemoryStream stream = new MemoryStream();
             DataContractJsonSerializer converter = new DataContractJsonSerializer(data.GetType());
@@ -47,14 +53,14 @@ namespace JSONSerializer
             using StreamReader reader = new StreamReader(stream);
             string parsing = reader.ReadToEnd();
 
-            File.WriteAllText(filename, FormatJson(parsing), Encoding.Unicode);
+            File.WriteAllText(filePath, Format(parsing), Encoding.Unicode);
         }
 
         /// <summary>
-        /// Formatte le text Json pour le rendre lisible
+        /// Formatte le text du fichier pour le rendre lisible
         /// </summary>
-        /// <param name="json">Le texte Json à rendre lisible</param>
-        public static string FormatJson(string json)
+        /// <param name="content">Le texte à rendre lisible</param>
+        public string Format(string content)
         {
             string indent = "  ";
             var indentation = 0;
@@ -62,7 +68,7 @@ namespace JSONSerializer
             var escapeCount = 0;
 
             var result =
-                from ch in json ?? string.Empty
+                from ch in content ?? string.Empty
                 let escaped = (ch == '\\' ? escapeCount++ : escapeCount > 0 ? escapeCount-- : escapeCount) > 0
                 let quotes = ch == '"' && !escaped ? quoteCount++ : quoteCount
                 let unquoted = quotes % 2 == 0
