@@ -9,16 +9,34 @@ namespace Project.Serialization.JSON
     /// <summary>
     /// Système de sauvegarde/chargement de données dans un fichier au format JSON
     /// </summary>
-    public class JSONSerializer : IFileWriter, IFileReader, IFileFormatter
+    public class JSONSerializer : IFileWriter, IFileReader
     {
         #region Fonctions publiques
+
+        /// <summary>
+        /// Enregristre le fichier sur le disque
+        /// </summary>
+        /// <param name="data">Données à sauvegarder</param>
+        /// <param name="filePath">Fichier a charger</param>
+        public void WriteToFile<T>(T data, string filePath) where T : notnull
+        {
+            using MemoryStream stream = new();
+            DataContractJsonSerializer converter = new(data.GetType());
+            converter.WriteObject(stream, data);
+            stream.Position = 0;
+
+            using StreamReader reader = new(stream);
+            string json = reader.ReadToEnd();
+
+            File.WriteAllText(filePath, Format(json), Encoding.Unicode);
+        }
 
         /// <summary>
         /// Charge un fichier de type générique
         /// </summary>
         /// <param name="filePath">Fichier a charger</param>
         /// <returns>Instance du fichier, new T() si le fichier n'existe pas.</returns>
-        public T LoadFromFile<T>(string filePath) where T : new()
+        public T ReadFromFile<T>(string filePath) where T : new()
         {
             if (!File.Exists(filePath))
             {
@@ -26,41 +44,21 @@ namespace Project.Serialization.JSON
             }
 
             // Lecture du fichier
-
             string data = File.ReadAllText(filePath);
 
             // Désérialisation des données
-
-            using MemoryStream stream = new MemoryStream(Encoding.Unicode.GetBytes(data));
-            DataContractJsonSerializer converter = new DataContractJsonSerializer(typeof(T));
+            using MemoryStream stream = new(Encoding.Unicode.GetBytes(data));
+            DataContractJsonSerializer converter = new(typeof(T));
             T result = (T)converter.ReadObject(stream);
 
             return result;
         }
 
         /// <summary>
-        /// Enregristre le fichier sur le disque
-        /// </summary>
-        /// <param name="data">Données à sauvegarder</param>
-        /// <param name="filePath">Fichier a charger</param>
-        public void SaveToFile<T>(T data, string filePath)
-        {
-            using MemoryStream stream = new MemoryStream();
-            DataContractJsonSerializer converter = new DataContractJsonSerializer(data.GetType());
-            converter.WriteObject(stream, data);
-            stream.Position = 0;
-
-            using StreamReader reader = new StreamReader(stream);
-            string parsing = reader.ReadToEnd();
-
-            File.WriteAllText(filePath, Format(parsing), Encoding.Unicode);
-        }
-
-        /// <summary>
         /// Formatte le text du fichier pour le rendre lisible
         /// </summary>
-        /// <param name="content">Le texte à rendre lisible</param>
-        public string Format(string content)
+        /// <param name="json">Le texte à rendre lisible</param>
+        public string Format(string json)
         {
             string indent = "  ";
             var indentation = 0;
@@ -68,7 +66,7 @@ namespace Project.Serialization.JSON
             var escapeCount = 0;
 
             var result =
-                from ch in content ?? string.Empty
+                from ch in json ?? string.Empty
                 let escaped = (ch == '\\' ? escapeCount++ : escapeCount > 0 ? escapeCount-- : escapeCount) > 0
                 let quotes = ch == '"' && !escaped ? quoteCount++ : quoteCount
                 let unquoted = quotes % 2 == 0
