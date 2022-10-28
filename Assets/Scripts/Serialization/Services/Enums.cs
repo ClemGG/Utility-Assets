@@ -4,6 +4,5 @@ namespace Project.Serialization
     {
         Json,
         XML,
-        Binary,
     }
 }

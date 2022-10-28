@@ -52,14 +52,6 @@ namespace Project.Serialization
                     }
                     extension = ".xml";
                     break;
-
-                case SerializationTargetType.Binary:
-                    //if (s_writer is not JSONSerializer)
-                    //{
-                    //    s_writer = new JSONSerializer();
-                    //}
-                    extension = ".txt";
-                    break;
             }
 
             s_writer.WriteToFile(data, $"{filePath}{extension}");
@@ -90,14 +82,6 @@ namespace Project.Serialization
                         s_reader = new XMLSerializer();
                     }
                     extension = ".xml";
-                    break;
-
-                case SerializationTargetType.Binary:
-                    //if (s_reader is not JSONSerializer)
-                    //{
-                    //    s_reader = new JSONSerializer();
-                    //}
-                    extension = ".txt";
                     break;
             }
 

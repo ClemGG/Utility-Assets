@@ -48,8 +48,8 @@ namespace Project.Serialization.JSON
 
             // Désérialisation des données
             using MemoryStream stream = new(Encoding.Unicode.GetBytes(data));
-            DataContractJsonSerializer converter = new(typeof(T));
-            T result = (T)converter.ReadObject(stream);
+            DataContractJsonSerializer ser = new(typeof(T));
+            T result = (T)ser.ReadObject(stream);
 
             return result;
         }
