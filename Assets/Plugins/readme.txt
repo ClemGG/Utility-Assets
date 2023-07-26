@@ -1,2 +1,0 @@
-Tous les fichiers dans les dossiers "Standard Assets", "Pro Standard Assets" et "Plugins" (eux-mêmes dans "Assets")
-sont compilés en premier, mais ne seront recompilés que si un script à l'intérieur change.
