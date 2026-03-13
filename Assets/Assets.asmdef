@@ -1,0 +1,19 @@
+{
+    "name": "Assets",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [
+        "Editor",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
