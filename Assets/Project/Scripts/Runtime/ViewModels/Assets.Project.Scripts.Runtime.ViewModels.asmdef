@@ -1,0 +1,21 @@
+{
+    "name": "Assets.Project.Scripts.Runtime.ViewModels",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0754feb706180f74089ecf944cb6e99c"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Assets.Project.Scripts.Runtime.Views",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0754feb706180f74089ecf944cb6e99c",
+        "GUID:12a9bf3266442f14080c28cf7a9b5407"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

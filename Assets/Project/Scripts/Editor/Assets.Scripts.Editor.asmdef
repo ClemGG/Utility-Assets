@@ -1,0 +1,20 @@
+{
+    "name": "Assets.Scripts.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0754feb706180f74089ecf944cb6e99c",
+        "GUID:12a9bf3266442f14080c28cf7a9b5407",
+        "GUID:ebd80edc93f710f458394ebc117762dc"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
